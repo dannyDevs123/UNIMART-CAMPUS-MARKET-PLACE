@@ -7,7 +7,7 @@ import {
   ExternalLink,
   GraduationCap,
   Instagram,
-  Linkedin,
+  Facebook,
   Mail,
   MessageCircle,
   Phone,
@@ -15,11 +15,11 @@ import {
   Store,
 } from 'lucide-react';
 
-const adminPhone = '0592546023';
-const adminPhoneDisplay = '059 254 6023';
+const adminPhone = '';
+const adminPhoneDisplay = '+233508757036';
 const supportEmail = 'support@unimart.edu.gh';
 const whatsappLink =
-  'https://api.whatsapp.com/send?phone=233592546023&text=Hi%20UniMart%20Administration%2C%20I%20would%20like%20to%20list%20a%20product%20on%20UniMart.';
+  'https://api.whatsapp.com/send?phone=233508757036&text=Hi%20UniMart%20Administration%2C%20I%20would%20like%20to%20list%20a%20product%20on%20UniMart.';
 
 const socialLinks = [
   {
@@ -35,10 +35,10 @@ const socialLinks = [
     icon: AtSign,
   },
   {
-    label: 'LinkedIn',
+    label: 'Facebook',
     handle: 'UniMart',
-    href: 'https://linkedin.com/company/unimartgh',
-    icon: Linkedin,
+    href: 'https://www.facebook.com/profile.php?id=61591007273210',
+    icon: Facebook,
   },
 ];
 

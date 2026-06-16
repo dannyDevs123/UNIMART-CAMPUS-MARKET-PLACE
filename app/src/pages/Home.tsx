@@ -148,7 +148,7 @@ export default function Home() {
                            px-8 py-3.5 rounded-xl font-semibold hover:bg-surface-container-low transition-all duration-200
                            hover:border-primary/30"
                 >
-                  List with UniMart
+                  Sell with UniMart
                 </Link>
               </div>
 
