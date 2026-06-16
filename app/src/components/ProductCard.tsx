@@ -45,7 +45,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="group bg-white rounded-2xl overflow-hidden shadow-premium hover:shadow-card-hover 
-                 transition-all duration-300 hover:-translate-y-1 border border-outline-variant/10"
+                 transition-all duration-300 hover:-translate-y-1 border border-outline-variant/10 transform-gpu"
     >
       {/* Image */}
       <Link to={`/product/${product.id}`} className="block relative aspect-square overflow-hidden bg-surface-container-low">
@@ -82,7 +82,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
         {/* Escrow badge */}
         {product.escrow && (
           <div className="absolute top-3 right-3">
-            <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold bg-indigo-600/90 text-white backdrop-blur-sm">
+            <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold bg-indigo-600 text-white">
               <ShieldCheck size={10} />
               Escrow
             </span>
@@ -95,15 +95,15 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
             e.preventDefault();
             setIsWishlisted(!isWishlisted);
           }}
-          className={`absolute bottom-3 right-3 p-2 rounded-full backdrop-blur-sm transition-all duration-200
-            ${isWishlisted ? 'bg-error text-white' : 'bg-white/80 text-on-surface-variant hover:bg-white hover:text-error'}`}
+          className={`absolute bottom-3 right-3 p-2 rounded-full transition-all duration-200
+            ${isWishlisted ? 'bg-error text-white' : 'bg-white text-on-surface-variant hover:text-error border border-outline-variant/20'}`}
         >
           <Heart size={16} className={isWishlisted ? 'fill-current' : ''} />
         </button>
 
         {/* Price tag on hover */}
         <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span className="px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-lg text-sm font-bold text-primary">
+          <span className="px-3 py-1.5 bg-white rounded-lg text-sm font-bold text-primary border border-outline-variant/20 shadow-sm">
             {formatPrice(product.price)}
           </span>
         </div>

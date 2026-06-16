@@ -79,14 +79,14 @@ const featuredProducts = products.slice(0, 8);
 
 export default function Home() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden transform-gpu will-change-transform bg-surface">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center hero-gradient overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-primary-container/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary-container/20 rounded-full blur-3xl pointer-events-none" />
+      <section className="relative min-h-[90vh] flex items-center hero-gradient overflow-hidden transform-gpu">
+        {/* Decorative elements — desktop only; blur filters cause mobile Chrome compositing glitches */}
+        <div className="hidden md:block absolute top-20 right-0 w-[600px] h-[600px] bg-[#eef0ff] rounded-full pointer-events-none" />
+        <div className="hidden md:block absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#e8ebff] rounded-full pointer-events-none" />
 
-        <div className="max-w-container-max mx-auto px-4 md:px-6 py-20 relative z-10">
+        <div className="max-w-container-max mx-auto px-4 md:px-6 py-20 relative z-10 transform-gpu">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
             <motion.div
@@ -99,7 +99,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-outline-variant/30 
+                className="inline-flex items-center gap-2 bg-white border border-outline-variant/30 
                          px-4 py-2 rounded-full text-sm text-primary font-medium shadow-sm mb-8"
               >
                 <ShieldCheck size={16} />
@@ -192,7 +192,7 @@ export default function Home() {
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute -left-8 top-1/4 glass-card rounded-2xl p-4 shadow-lg"
+                  className="absolute -left-8 top-1/4 bg-white rounded-2xl p-4 shadow-lg border border-outline-variant/10"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
@@ -209,7 +209,7 @@ export default function Home() {
                 <motion.div
                   animate={{ y: [0, 10, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute -right-4 bottom-1/4 glass-card rounded-2xl p-4 shadow-lg"
+                  className="absolute -right-4 bottom-1/4 bg-white rounded-2xl p-4 shadow-lg border border-outline-variant/10"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
@@ -228,7 +228,7 @@ export default function Home() {
       </section>
 
       {/* Stats Bar */}
-      <section className="bg-white border-y border-outline-variant/20">
+      <section className="bg-white border-y border-outline-variant/20 transform-gpu">
         <div className="max-w-container-max mx-auto px-4 md:px-6 py-8">
           <motion.div
             {...staggerContainer}
@@ -255,8 +255,8 @@ export default function Home() {
       </section>
 
       {/* Categories */}
-      <section className="py-16 md:py-24 bg-surface">
-        <div className="max-w-container-max mx-auto px-4 md:px-6">
+      <section className="py-16 md:py-24 bg-surface transform-gpu will-change-transform">
+        <div className="max-w-container-max mx-auto px-4 md:px-6 transform-gpu">
           <motion.div {...fadeUp} className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-on-surface mb-3">
               Browse by Category
@@ -266,20 +266,21 @@ export default function Home() {
 
           <motion.div
             {...staggerContainer}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 transform-gpu"
           >
             {categories.map((cat, i) => (
               <motion.div
                 key={cat.label}
                 {...staggerItem}
                 transition={{ delay: i * 0.08 }}
+                className="transform-gpu"
               >
                 <Link
                   to="/marketplace"
                   className="flex flex-col items-center gap-3 p-6 bg-white rounded-2xl border border-outline-variant/20 
-                           hover:border-primary/30 hover:shadow-card hover:-translate-y-1 transition-all duration-300 group"
+                           hover:border-primary/30 hover:shadow-card hover:-translate-y-1 transition-all duration-300 group transform-gpu"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-primary-container/15 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-[#eef0ff] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                     <cat.icon size={22} />
                   </div>
                   <span className="font-semibold text-sm text-on-surface">{cat.label}</span>
@@ -292,8 +293,8 @@ export default function Home() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-16 md:py-24 bg-surface-container-low/30">
-        <div className="max-w-container-max mx-auto px-4 md:px-6">
+      <section className="py-16 md:py-24 bg-[#eff4ff] transform-gpu">
+        <div className="max-w-container-max mx-auto px-4 md:px-6 transform-gpu">
           <motion.div {...fadeUp} className="flex items-end justify-between mb-10">
             <div>
               <h2 className="text-2xl md:text-3xl font-bold text-on-surface mb-2">
@@ -329,12 +330,12 @@ export default function Home() {
       </section>
 
       {/* How Escrow Works */}
-      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary-container/5 rounded-full blur-3xl pointer-events-none" />
+      <section className="py-16 md:py-24 bg-white relative overflow-hidden transform-gpu">
+        <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#f0f2ff] rounded-full pointer-events-none" />
 
-        <div className="max-w-container-max mx-auto px-4 md:px-6 relative z-10">
+        <div className="max-w-container-max mx-auto px-4 md:px-6 relative z-10 transform-gpu">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 bg-primary-container/15 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <span className="inline-flex items-center gap-2 bg-[#eef0ff] text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
               <ShieldCheck size={16} />
               UniMart Escrow
             </span>
@@ -377,8 +378,8 @@ export default function Home() {
 
                 {/* Content */}
                 <div
-                  className={`glass-card rounded-2xl p-6 flex-1 ${
-                    step.status === 'current' ? 'border-primary/30 bg-primary-container/5' : ''
+                  className={`rounded-2xl p-6 flex-1 border border-outline-variant/10 bg-white shadow-sm transform-gpu ${
+                    step.status === 'current' ? 'border-primary/30 bg-[#f5f6ff]' : ''
                   }`}
                 >
                   <div className="flex items-center gap-3 mb-2">
@@ -401,7 +402,7 @@ export default function Home() {
       </section>
 
       {/* Trust / Why UniMart */}
-      <section className="py-16 md:py-24 bg-surface">
+      <section className="py-16 md:py-24 bg-surface transform-gpu">
         <div className="max-w-container-max mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-on-surface mb-3">
@@ -436,9 +437,9 @@ export default function Home() {
                 {...staggerItem}
                 transition={{ delay: i * 0.1 }}
                 className="bg-white rounded-2xl p-8 border border-outline-variant/10 shadow-premium hover:shadow-card-hover 
-                         hover:-translate-y-1 transition-all duration-300"
+                         hover:-translate-y-1 transition-all duration-300 transform-gpu"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary-container/15 flex items-center justify-center text-primary mb-5">
+                <div className="w-12 h-12 rounded-xl bg-[#eef0ff] flex items-center justify-center text-primary mb-5">
                   <item.icon size={22} />
                 </div>
                 <h3 className="font-semibold text-lg text-on-surface mb-3">{item.title}</h3>
@@ -450,21 +451,21 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-container-max mx-auto px-4 md:px-6">
+      <section className="py-16 md:py-24 transform-gpu">
+        <div className="max-w-container-max mx-auto px-4 md:px-6 transform-gpu">
           <motion.div
             {...fadeUp}
-            className="relative bg-primary rounded-3xl p-10 md:p-16 overflow-hidden text-center"
+            className="relative bg-primary rounded-3xl p-10 md:p-16 overflow-hidden text-center transform-gpu"
           >
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary-container/30 rounded-full blur-2xl" />
+            {/* Decorative elements — solid fills only, no blur on mobile */}
+            <div className="hidden md:block absolute top-0 right-0 w-64 h-64 bg-[#4f46b8] rounded-full opacity-40" />
+            <div className="hidden md:block absolute bottom-0 left-0 w-48 h-48 bg-[#6366d4] rounded-full opacity-30" />
 
             <div className="relative z-10 max-w-xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Ready to Start Trading?
               </h2>
-              <p className="text-primary-foreground/80 mb-8 text-lg">
+              <p className="text-white/90 mb-8 text-lg">
                 Browse campus deals and pay securely with mobile money. Want to sell? Contact our
                 administration team to list your products.
               </p>
@@ -472,15 +473,15 @@ export default function Home() {
                 <Link
                   to="/marketplace"
                   className="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-3.5 
-                           rounded-xl font-semibold hover:bg-white/90 transition-all duration-200 shadow-lg"
+                           rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
                 >
                   Browse Items
                   <ArrowRight size={18} />
                 </Link>
                 <Link
                   to="/seller-dashboard"
-                  className="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 
-                           px-8 py-3.5 rounded-xl font-semibold hover:bg-white/20 transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 bg-[#4f46b8] text-white border border-[#6366d4] 
+                           px-8 py-3.5 rounded-xl font-semibold hover:bg-[#4338ca] transition-all duration-200"
                 >
                   Contact Administration
                 </Link>

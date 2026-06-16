@@ -14,9 +14,9 @@ export default function Layout() {
   const isDashboard = location.pathname.includes('dashboard');
 
   return (
-    <div className="min-h-screen flex flex-col bg-surface text-on-surface font-sans">
+    <div className="min-h-screen flex flex-col bg-surface text-on-surface font-sans transform-gpu">
       <Navbar />
-      <main className={`flex-1 ${isDashboard ? '' : 'pt-[72px]'}`}>
+      <main className={`flex-1 transform-gpu will-change-transform ${isDashboard ? '' : 'pt-[72px]'}`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
@@ -25,6 +25,7 @@ export default function Layout() {
             animate="animate"
             exit="exit"
             transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="transform-gpu will-change-transform"
           >
             <Outlet />
           </motion.div>

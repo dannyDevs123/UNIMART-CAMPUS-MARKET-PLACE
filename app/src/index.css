@@ -68,17 +68,13 @@
 
 @layer components {
   .glass-panel {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: #ffffff;
+    border: 1px solid rgba(200, 196, 213, 0.4);
   }
   
   .glass-card {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: #ffffff;
+    border: 1px solid rgba(200, 196, 213, 0.35);
     box-shadow: 0px 4px 20px rgba(55, 48, 163, 0.04);
   }
   
@@ -87,7 +83,7 @@
   }
   
   .hero-gradient {
-    background: linear-gradient(135deg, rgba(248,249,255,1) 0%, rgba(226,223,255,0.4) 100%);
+    background: linear-gradient(135deg, #f8f9ff 0%, #eef0ff 100%);
   }
   
   .pulse-ring {
